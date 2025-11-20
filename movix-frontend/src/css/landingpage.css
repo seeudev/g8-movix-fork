@@ -1,0 +1,140 @@
+/* Wrapper */
+.landing-page-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #141414;
+  color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  height: 100vh;       /* full viewport height */
+  position: sticky;    /* keeps sidebar in place while scrolling */
+  top: 0;              /* stick to top */
+  overflow-y: auto;    /* scroll if sidebar content exceeds viewport */
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.profile-icon {
+  width: 64px;
+  height: 64px;
+  color: #e50914;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+
+.sidebar-btn:hover {
+  color: #e50914;
+}
+
+/* Sidebar footer */
+.sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Main content */
+.landing-main {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;      /* scroll only the main content */
+  max-height: 100vh;     /* prevent main content from exceeding viewport */
+}
+
+.movie-section {
+  margin-bottom: 3rem;
+}
+
+.movie-section h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #e50914;
+}
+
+.movie-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #141414;
+}
+
+.movie-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.movie-row::-webkit-scrollbar-track {
+  background: #141414;
+}
+
+.movie-row::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+/* Movie card */
+.movie-card {
+  min-width: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card img {
+  width: 200px;       /* sets the width */
+  height: 300px;      /* sets the height */
+  object-fit: cover;  /* crops/resizes image without stretching */
+  border-radius: 8px; /* optional: rounded corners */
+  transition: transform 0.2s;
+}
+
+.movie-card img:hover {
+  transform: scale(1.05); /* optional zoom effect on hover */
+}
+
+.movie-card p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Hover effect */
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
