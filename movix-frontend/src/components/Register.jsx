@@ -1,65 +1,129 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Eye, EyeOff } from 'lucide-react';
 import '../css/global.css';
+import movie2 from '../assets/covers/sher.jpg';
 
-function Register() {
+const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage('Registering...');
+    setError('');
 
-    const API_URL = 'http://localhost:8081/api/auth/register';
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    setLoading(true);
 
     try {
-      const response = await axios.post(API_URL, { email, password });
-      setMessage('Registration successful! Check your email to confirm your account.');
-      console.log('Backend response:', response.data);
-    } catch (error) {
-      const errorMessage = error.response ? error.response.data || 'Registration failed' : 'Network error or CORS issue.';
-      setMessage(`Error: ${errorMessage}`);
-      console.error('Registration error:', error);
+      const response = await fetch('http://localhost:8081/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        navigate('/login');
+      } else {
+        setError(data.message || 'Registration failed');
+      }
+    } catch (err) {
+      setError('Network error. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="page-wrapper">
-      <h2>Register for Movix</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit" style={{ backgroundColor: '#007bff', color: 'white', border: 'none' }}>
-          Register
-        </button>
-      </form>
+    <div className="auth-container">
+      <div className="auth-card">
+        {/* Left Side - Movie Poster */}
+        <div className="auth-poster">
+          <img src={movie2} alt="Featured Movie" />
+          <div className="poster-overlay">
+            <div className="poster-content">
+              <span className="poster-badge">Coming Soon</span>
+              <h2>Sherlock Homeboy</h2>
+              <p>A modern-day take on Sherlock Holmes, where the eccentric detective uses sharp observation and deduction to solve crimes in 21st-century London.</p>
+            </div>
+          </div>
+        </div>
 
-      {message && <p style={{ marginTop: '15px', color: message.startsWith('Error') ? 'red' : 'green' }}>{message}</p>}
+        {/* Right Side - Register Form */}
+        <div className="auth-form-section">
+          <div className="auth-form-container">
+            <h1>Create Account</h1>
+            <p className="auth-subtitle">Sign up to get started</p>
 
-      {/* Already have an account redirection */}
-      <div style={{ marginTop: '20px', textAlign: 'center' }}>
-        <p>Already have an account?</p>
-        <button
-          onClick={() => navigate('/login')}
-          style={{
-            backgroundColor: '#28a745',
-            color: 'white',
-            border: 'none',
-            padding: '8px 12px',
-            borderRadius: '4px',
-            cursor: 'pointer',
-          }}
-        >
-          Login Here
-        </button>
+            {error && <div className="auth-error">{error}</div>}
+
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Password</label>
+                <div className="password-input">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Create a password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="toggle-password"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  placeholder="Confirm your password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </div>
+
+              <button type="submit" className="auth-btn" disabled={loading}>
+                {loading ? 'Creating account...' : 'Sign Up'}
+              </button>
+            </form>
+
+            <p className="auth-switch">
+              Already have an account? <a onClick={() => navigate('/login')}>Login</a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Register;
