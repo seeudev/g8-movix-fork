@@ -1,8 +1,8 @@
-Movix
+# Movix
 
 Movix is a modern, responsive movie booking application designed to provide a seamless cinema ticketing experience. Users can browse movies currently showing, view detailed information including cast and reviews, and proceed to booking.
 
- Features
+# Features
 
 Now Showing: Browse top-rated and currently showing movies in a grid layout.
 
@@ -14,7 +14,7 @@ Real-time Data: Integration with Supabase for fetching dynamic movie data.
 
 Tools & Technologies Used
 
-Frontend:
+# Frontend:
 
 React.js - Component-based UI library.
 
@@ -24,60 +24,63 @@ React Router - For navigation and routing.
 
 CSS3 - Custom styling for the monochrome aesthetic.
 
-Backend:
+# Backend:
 
-Java
+* Java
 
-Spring Boot
+* Spring Boot
 
-Database & Services:
+#  Database & Services:
 
 Supabase - Open source Firebase alternative (PostgreSQL) for data storage.
 
-Development Tools:
+# Development Tools:
 
-IntelliJ IDEA
+* IntelliJ IDEA
 
-Git & GitHub
+* Git & GitHub
 
-npm (Node Package Manager)
+* npm (Node Package Manager)
 
-Maven
+* Maven
 
-Getting Started
+# Prerequisites
 
-Prerequisites
+* Node.js installed
 
-Node.js installed
+* Java JDK installed (for backend)
 
-Java JDK installed (for backend)
+# Installation (Frontend)
 
-Installation (Frontend)
+1. Clone the repository:
 
-Clone the repository:
+``` git clone 
+[https://github.com/anirak411/g8-movix.git](https://github.com/anirak411/g8-movix.git) 
+```
 
-git clone [https://github.com/anirak411/g8-movix.git](https://github.com/anirak411/g8-movix.git)
+2. Navigate to the frontend directory:
 
+``` 
+cd movix-frontend 
+```
 
-Navigate to the frontend directory:
+3. Install dependencies:
 
-cd movix-frontend
-
-
-Install dependencies:
-
+``` 
 npm install
+```
 
+4. Run the application:
 
-Run the application:
-
+````
 npm run dev
+````
+
+5. Open your browser and visit the local URL (http://localhost:5173).
 
 
-Open your browser and visit the local URL (usually http://localhost:5173).
+Developed by:
 
-Developed by: 
-
-Najarro, Monica A.
-Polancos, Mizzie C.
-Portes, Ed Lawrenz C.
+* Najarro, Monica A. 
+* Polancos, Mizzie C. 
+* Portes, Ed Lawrenz C.
