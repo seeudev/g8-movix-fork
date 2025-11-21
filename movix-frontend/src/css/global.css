@@ -1,74 +1,256 @@
-/* Reset some defaults */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Set body defaults */
-body {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  min-width: 320px;
+/* ===== AUTH CONTAINER ===== */
+.auth-container {
   min-height: 100vh;
-  background-color: #f0f0f0;
-  color: #000;
-}
-
-/* Links */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-a:hover {
-  color: #007bff;
-}
-
-/* Buttons */
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  padding: 0.5em 1em;
-  background-color: #1a1a1a;
-  color: #fff;
-  transition: all 0.2s;
-}
-button:hover {
-  background-color: #333;
-}
-
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-}
-
-/* ===== PAGE WRAPPER FOR CENTERING ===== */
-.page-wrapper {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  width: 100%;
-  max-width: 800px;       /* adjust as needed */
-  margin: 50px auto;      /* centers horizontally and adds top/bottom spacing */
-  padding: 20px;
-  background-color: #fff; /* optional: for form/card backgrounds */
-  border-radius: 10px;    /* optional: rounded corners for a card feel */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
-  box-sizing: border-box;
+  background: #0f0f1a;
+  padding: 2rem;
 }
 
-/* Optional: input styles for consistency */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.auth-card {
+  display: flex;
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-top: 5px;
-  margin-bottom: 15px;
+  max-width: 900px;
+  background: #1a1a2e;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== LEFT SIDE - POSTER ===== */
+.auth-poster {
+  position: relative;
+  width: 45%;
+  min-height: 550px;
+}
+
+.auth-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+.poster-content {
+  color: #fff;
+}
+
+.poster-badge {
+  display: inline-block;
+  background: #e50914;
+  color: #fff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+}
+
+.poster-content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.poster-content p {
+  font-size: 0.9rem;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+/* ===== RIGHT SIDE - FORM ===== */
+.auth-form-section {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: #1a1a2e;
+}
+
+.auth-form-container {
+  width: 100%;
+  max-width: 350px;
+}
+
+.auth-form-container h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+  color: #666;
   font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== ERROR MESSAGE ===== */
+.auth-error {
+  background: rgba(229, 9, 20, 0.1);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  color: #e50914;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== FORM STYLES ===== */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #e50914;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group input::placeholder {
+  color: #555;
+}
+
+/* ===== PASSWORD INPUT ===== */
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 19px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-password:hover {
+  color: #e50914;
+}
+
+/* ===== FORM OPTIONS ===== */
+.form-options {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.forgot-link {
+  color: #e50914;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.forgot-link:hover {
+  color: #ff6b6b;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.auth-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #e50914;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-btn:hover:not(:disabled) {
+  background: #f40612;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+}
+
+.auth-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===== SWITCH LINK ===== */
+.auth-switch {
+  text-align: center;
+  margin-top: 2rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.auth-switch a {
+  color: #e50914;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.auth-switch a:hover {
+  color: #ff6b6b;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .auth-card {
+    flex-direction: column;
+    max-width: 450px;
+  }
+
+  .auth-poster {
+    width: 100%;
+    min-height: 250px;
+  }
+
+  .auth-form-section {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .auth-form-container h1 {
+    font-size: 1.5rem;
+  }
 }
