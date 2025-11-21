@@ -7,6 +7,7 @@ import Register from './components/Register.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import SeatSelectionPage from './components/SeatSelectionPage.jsx';
 import Settings from './components/Settings.jsx';
+import MovieDetailsPage from './components/MovieDetailsPage';
 
 const ProtectedRoute = ({ children }) => {
   const { isLoggedIn } = useAuth();
@@ -63,6 +64,9 @@ function App() {
               />
 
               <Route path="*" element={<Navigate to="/login" replace />} />
+
+              <Route path="/movie-details" element={<MovieDetailsPage />} />
+
             </Routes>
           </div>
         </main>
