@@ -1,16 +1,13 @@
 package csit321.cit.movix.model;
 
-// ----------------------------------------------------------------
-// !!! CRITICAL FIX: CHANGE JAVAX TO JAKARTA !!!
 import jakarta.persistence.*;
-// ----------------------------------------------------------------
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 @Entity
-@Table(name = "users") // Maps this class to a table named 'users' in the DB
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,23 +16,20 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Primary key, auto-incremented by the database
+    private Long id;
 
     @Column(unique = true, nullable = false)
-    private String email; // Must be unique and cannot be null (required for login/register)
+    private String email;
 
     @Column(nullable = false)
-    private String password; // Will store the HASHED password
+    private String password;
 
-    // --- CRITICAL ADDITION/FIX: Enable user immediately ---
     @Column(nullable = false)
-    private Boolean enabled = true; // NEW: User is active instantly upon registration
-    // --------------------------------------------------------
-    
-    // Custom constructor for registration (without the ID)
+    private Boolean enabled = true;
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.enabled = true; // Ensure the new user is enabled immediately
+        this.enabled = true;
     }
 }

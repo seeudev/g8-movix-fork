@@ -6,10 +6,7 @@ import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
-import org.springframework.security.core.GrantedAuthority;
 
-
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -19,15 +16,13 @@ public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    private String email; // Used as the principal/username in Spring Security
+    private String email;
 
     @JsonIgnore
     private String password;
 
-    // A collection of authorities (roles/permissions)
     private Collection<? extends GrantedAuthority> authorities;
 
-    // Constructor used by the build method below
     public UserDetailsImpl(Long id, String email, String password,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
@@ -36,24 +31,16 @@ public class UserDetailsImpl implements UserDetails {
         this.authorities = authorities;
     }
 
-    /**
-     * Factory method to create UserDetailsImpl from a database User object.
-     * @param user The User entity fetched from the database.
-     * @return A UserDetailsImpl instance.
-     */
     public static UserDetailsImpl build(User user) {
-        // Since your current setup doesn't show roles, we use an empty list for authorities.
-        List<GrantedAuthority> authorities = Collections.emptyList(); 
-        
+        List<GrantedAuthority> authorities = Collections.emptyList();
+
         return new UserDetailsImpl(
-                user.getId(), 
-                user.getEmail(), 
-                user.getPassword(), 
+                user.getId(),
+                user.getEmail(),
+                user.getPassword(),
                 authorities
         );
     }
-
-    // --- Required UserDetails methods from Spring Security ---
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -65,10 +52,9 @@ public class UserDetailsImpl implements UserDetails {
         return password;
     }
 
-    // The method Spring Security uses to identify the user (we use email)
     @Override
     public String getUsername() {
-        return email; 
+        return email;
     }
 
     @Override

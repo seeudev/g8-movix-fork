@@ -9,24 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
-    
-    // ⭐ CRITICAL: Remove any @PreAuthorize or @Secured annotations here!
+
     @GetMapping("/user")
     public String userAccess() {
-        // This message should now be returned successfully when you access /api/test/user
         return "SUCCESS! Message from Backend: Welcome to the Movix User Dashboard.";
     }
-
-    // You can also uncomment these two for testing if you have them:
-    /*
-    @GetMapping("/admin")
-    public String adminAccess() {
-        return "Admin Board.";
-    }
-
-    @GetMapping("/mod")
-    public String moderatorAccess() {
-        return "Moderator Board.";
-    }
-    */
 }

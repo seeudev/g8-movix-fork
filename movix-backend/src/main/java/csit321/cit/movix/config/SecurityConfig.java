@@ -9,26 +9,21 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy; // ⭐ RE-ADDED THIS IMPORT
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-// import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter; // No longer needed
-
-// ⭐ CORS IMPORTS (KEPT)
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 
 @Configuration
-@EnableMethodSecurity // Enables @PreAuthorize/@PostAuthorize
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Autowired
     UserDetailsServiceImpl userDetailsService;
-
-    // All JWT-related beans are gone/commented out/removed.
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -48,14 +43,13 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Highly permissive CORS configuration (KEPT)
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173", "http://localhost:3000"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*")); 
-        configuration.setAllowCredentials(true); 
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -64,20 +58,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
-            // ⭐ Use the CORS configuration
-            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-            
-            // ⭐ CRITICAL: Explicitly set to stateless. This is often the final piece to kill the 403.
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            
-            // ⭐ CRITICAL: Allow all requests to bypass security checks
-            .authorizeHttpRequests(auth -> 
-                auth.anyRequest().permitAll()
-            );
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth ->
+                        auth.anyRequest().permitAll()
+                );
 
         http.authenticationProvider(authenticationProvider());
-        
-        // No filter added here.
 
         return http.build();
     }

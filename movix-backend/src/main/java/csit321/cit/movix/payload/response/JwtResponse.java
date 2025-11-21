@@ -12,7 +12,6 @@ public class JwtResponse {
         this.email = email;
     }
 
-    // Getters and Setters (or use Lombok @Data)
     public String getToken() {
         return token;
     }

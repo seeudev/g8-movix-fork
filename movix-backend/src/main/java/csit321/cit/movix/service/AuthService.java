@@ -1,7 +1,5 @@
 package csit321.cit.movix.service;
 
-// This is the correct package path if the file UserDetailsImpl.java
-// is placed inside the 'service' directory, as shown in your screenshot.
 import csit321.cit.movix.service.UserDetailsServiceImpl; 
 import csit321.cit.movix.service.UserDetailsImpl; 
 import csit321.cit.movix.model.User;
