@@ -1,61 +1,73 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext'; // Import ThemeProvider
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import SeatSelectionPage from './components/SeatSelectionPage.jsx';
-import MovieDesc from './components/MovieDesc.jsx';
-import NowShowing from './components/NowShowing.jsx';
+import Settings from './components/Settings.jsx';
 
-// Protected Route wrapper
 const ProtectedRoute = ({ children }) => {
   const { isLoggedIn } = useAuth();
-  if (!isLoggedIn) return <Navigate to="/login" replace />;
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
   return children;
 };
 
 function App() {
+  const { isLoggedIn } = useAuth();
+
   return (
-    <div className="min-h-screen w-full bg-gray-50 flex flex-col font-sans items-center">
-      <main className="flex flex-col flex-grow w-full items-center justify-center p-6 bg-gray-100">
-        <div className="w-full max-w-5xl">
-          <Routes>
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
+    // 1. Wrap everything in ThemeProvider so settings works
+    <ThemeProvider>
+      <div className="min-h-screen w-full bg-black flex flex-col font-sans">
+        <main className="flex flex-col flex-grow w-full bg-black">
+          <div className="w-full h-full">
+            <Routes>
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
 
-            {/* Protected landing page */}
-            <Route
-              path="/landing"
-              element={
-                <ProtectedRoute>
-                  <LandingPage />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/landing"
+                element={
+                  <ProtectedRoute>
+                    <LandingPage />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* Protected seat selection page */}
-            <Route
-              path="/seat-selection"
-              element={
-                <ProtectedRoute>
-                  <SeatSelectionPage />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/seat-selection"
+                element={
+                  <ProtectedRoute>
+                    <SeatSelectionPage />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* Default redirect based on login status */}
-            <Route
-              path="/"
-              element={<Navigate to={localStorage.getItem('userToken') ? "/landing" : "/login"} replace />}
-            />
+              {/* 2. THIS WAS MISSING - Add the Settings Route */}
+              <Route
+                path="/settings"
+                element={
+                  <ProtectedRoute>
+                    <Settings />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* Catch-all for unknown routes */}
-            <Route path="*" element={<Navigate to="/login" replace />} />
-          </Routes>
-        </div>
-      </main>
-    </div>
+              <Route
+                path="/"
+                element={<Navigate to={isLoggedIn ? "/landing" : "/login"} replace />}
+              />
+
+              <Route path="*" element={<Navigate to="/login" replace />} />
+            </Routes>
+          </div>
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
 

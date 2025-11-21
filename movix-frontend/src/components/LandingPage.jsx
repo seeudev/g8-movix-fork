@@ -3,18 +3,20 @@ import { useAuth } from '../context/AuthContext';
 import { Search, Bell, Play, Star, Settings, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import '../css/landingpage.css';
-import movie1 from '../assets/covers/movie1.jpg';
-import movie2 from '../assets/covers/movie2.jpg';
-import movie3 from '../assets/covers/movie3.jpg';
-import movie4 from '../assets/covers/movie4.jpg';
-import movie5 from '../assets/covers/movie5.jpg';
-import movie6 from '../assets/covers/movie6.jpg';
-import movie7 from '../assets/covers/movie7.jpg';
-import movie8 from '../assets/covers/movie8.jpg';
-import movie9 from '../assets/covers/movie9.jpg';
-import movie10 from '../assets/covers/movie10.jpg';
-import movie11 from '../assets/covers/movie11.jpg';
-import movie12 from '../assets/covers/movie12.jpg';
+
+import ff from '../assets/movies/ff.jpeg';
+import superman from '../assets/movies/superman.jpeg';
+import conjuring from '../assets/movies/conjuring.jpeg';
+import dwp2 from '../assets/movies/dwp2.jpg';
+import frankenstein from '../assets/movies/frankenstein.jpeg';
+import spiderman from '../assets/movies/spiderman.jpg';
+import odyssey from '../assets/movies/odyssey.jpeg';
+import doomsday from '../assets/movies/doomsday.jpg';
+import thg from '../assets/movies/thg.jpeg';
+import jjk from '../assets/movies/jjk.jpg';
+import avatar from '../assets/movies/avatar.jpeg';
+import nowyouseeme from '../assets/movies/nowyouseeme.png';
+import wicked from '../assets/movies/wicked.jpg';
 
 const LandingPage = () => {
   const { logout } = useAuth();
@@ -28,36 +30,36 @@ const LandingPage = () => {
 
   const featuredMovie = {
     id: 1,
-    title: 'Kaliwaan',
-    description: 'A thrilling story of love, betrayal, and redemption set in the heart of Manila.',
-    image: movie1,
+    title: 'Wicked for Good',
+    description: 'Elphaba, the future Wicked Witch of the West and her relationship with Glinda, the Good Witch of the North. The second of a two-part feature film adaptation of the Broadway musical.',
+    image: wicked,
     rating: 4.8,
     year: '2024',
-    duration: '2h 15m',
-    genre: 'Drama / Thriller'
+    duration: '2h 18m',
+    genre: 'Drama / Musical'
   };
 
   const continueWatching = [
-    { id: 1, title: 'Unang Tikim', image: movie3, progress: 65, duration: '1h 45m' },
-    { id: 2, title: 'Tayuan', image: movie4, progress: 30, duration: '2h 10m' },
-    { id: 3, title: 'Sapul', image: movie5, progress: 80, duration: '1h 55m' },
+    { id: 1, title: "Now You See Me, Now You Don't", image: nowyouseeme, progress: 65, duration: '1h 52m' },
+    { id: 2, title: 'Avatar: Fire and Ash', image: avatar, progress: 30, duration: '3h 15m' },
+    { id: 3, title: 'JUJUTSU KAISEN: Shibuya Incident×The Culling Game', image: jjk, progress: 80, duration: '1h 55m' },
   ];
 
   const nowShowing = [
-    { id: 7, title: 'Salitan', image: movie7, rating: 4.5, genre: 'Drama' },
-    { id: 8, title: 'Paupahan', image: movie8, rating: 4.2, genre: 'Comedy' },
-    { id: 9, title: 'Balik Taya', image: movie9, rating: 4.7, genre: 'Thriller' },
-    { id: 10, title: 'Cita', image: movie10, rating: 4.3, genre: 'Romance' },
-    { id: 11, title: 'Werewo', image: movie11, rating: 4.1, genre: 'Horror' },
-    { id: 12, title: 'Pusoy', image: movie12, rating: 4.6, genre: 'Action' },
+    { id: 7, title: 'The Devil Wears Prada 2', image: dwp2, rating: 4.5, genre: 'Comedy' },
+    { id: 8, title: 'Frankenstein', image: frankenstein, rating: 4.2, genre: 'Horror' },
+    { id: 9, title: 'The Odyssey', image: odyssey, rating: 4.7, genre: 'Epic' },
+    { id: 10, title: 'Spiderman: Brand New Day', image: spiderman, rating: 4.3, genre: 'Action' },
+    { id: 11, title: 'The Hunger Games: Sunrise on the Reaping', image: thg, rating: 4.1, genre: 'Drama' },
+    { id: 12, title: 'Avengers: Doomsday', image: doomsday, rating: 4.6, genre: 'Action' },
   ];
 
   const popular = [
-    { id: 2, title: 'EKS', image: movie2, rating: 4.4, genre: 'Romance' },
-    { id: 3, title: 'Unang Tikim', image: movie3, rating: 4.8, genre: 'Drama' },
-    { id: 4, title: 'Tayuan', image: movie4, rating: 4.2, genre: 'Comedy' },
-    { id: 5, title: 'Sapul', image: movie5, rating: 4.5, genre: 'Thriller' },
-    { id: 6, title: 'Bugso', image: movie6, rating: 4.3, genre: 'Action' },
+    { id: 2, title: 'Wicked for Good', image: wicked, rating: 4.8, genre: 'Musical' },
+    { id: 3, title: 'Frankenstein', image: frankenstein, rating: 4.8, genre: 'Horror' },
+    { id: 4, title: 'The Conjuring: Last Rites', image: conjuring, rating: 4.2, genre: 'Horror' },
+    { id: 5, title: 'Superman', image: superman, rating: 4.5, genre: 'Action' },
+    { id: 6, title: 'Freakier Friday', image: ff, rating: 4.3, genre: 'Comedy' },
   ];
 
   const handleMovieClick = (movie) => {

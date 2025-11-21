@@ -1,13 +1,11 @@
-/* ===== SEAT PAGE LAYOUT ===== */
 .seat-page {
   display: flex;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  color: #fff;
+  background: var(--bg-page);
+  color: var(--text-main);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* ===== LEFT SIDE - POSTER ===== */
 .seat-poster {
   position: relative;
   width: 40%;
@@ -23,7 +21,7 @@
 .poster-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 60%, #1a1a1a 100%),
+  background: linear-gradient(90deg, transparent 60%, var(--bg-page) 100%),
               linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 30%);
 }
 
@@ -60,7 +58,7 @@
 }
 
 .cinema-info svg {
-  color: #f5c518;
+  color: var(--accent);
   margin-top: 2px;
 }
 
@@ -68,18 +66,19 @@
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 0.25rem;
+  color: #fff;
 }
 
 .cinema-address {
   font-size: 0.85rem;
-  color: #aaa;
+  color: #ccc;
 }
 
-/* ===== RIGHT SIDE - SELECTION ===== */
 .seat-selection {
   flex: 1;
   padding: 2.5rem 3rem;
   overflow-y: auto;
+  background: var(--bg-page);
 }
 
 .seat-selection h1 {
@@ -88,9 +87,9 @@
   text-align: center;
   margin-bottom: 2rem;
   letter-spacing: 2px;
+  color: var(--text-header);
 }
 
-/* ===== MOVIE SELECT ===== */
 .movie-select {
   margin-bottom: 1.5rem;
 }
@@ -98,14 +97,15 @@
 .movie-select label {
   display: block;
   font-size: 0.9rem;
-  color: #888;
+  color: var(--text-secondary);
   margin-bottom: 0.5rem;
   text-align: center;
 }
 
 .movie-dropdown {
-  background: #fff;
-  color: #000;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
   padding: 0.875rem 1.5rem;
   border-radius: 30px;
   text-align: center;
@@ -114,13 +114,12 @@
   margin: 0 auto;
 }
 
-/* ===== DATE PICKER ===== */
 .date-picker {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
-  background: rgba(255,255,255,0.1);
+  background: var(--bg-hover);
   padding: 0.5rem;
   border-radius: 30px;
   max-width: fit-content;
@@ -135,19 +134,19 @@
   padding: 0.5rem 1rem;
   background: transparent;
   border: none;
-  color: #888;
+  color: var(--text-secondary);
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .date-btn:hover {
-  color: #fff;
+  color: var(--text-main);
 }
 
 .date-btn.active {
-  background: #888;
-  color: #fff;
+  background: var(--text-secondary);
+  color: var(--bg-page);
 }
 
 .date-day {
@@ -160,7 +159,6 @@
   text-transform: uppercase;
 }
 
-/* ===== CINEMA SELECT ===== */
 .cinema-select {
   display: flex;
   justify-content: center;
@@ -171,8 +169,8 @@
 .cinema-btn {
   padding: 0.75rem 1.5rem;
   background: transparent;
-  border: 2px solid #444;
-  color: #888;
+  border: 2px solid var(--border-color);
+  color: var(--text-secondary);
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
@@ -180,16 +178,15 @@
 }
 
 .cinema-btn:hover {
-  border-color: #f5c518;
-  color: #fff;
+  border-color: var(--accent);
+  color: var(--text-main);
 }
 
 .cinema-btn.active {
-  border-color: #f5c518;
-  color: #f5c518;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-/* ===== SEAT SECTION ===== */
 .seat-section {
   margin-bottom: 2rem;
 }
@@ -198,23 +195,22 @@
   text-align: center;
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
-  color: #ccc;
+  color: var(--text-secondary);
 }
 
 .screen {
   text-align: center;
   font-size: 0.75rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
   padding: 0.5rem;
-  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+  background: linear-gradient(180deg, var(--bg-hover) 0%, transparent 100%);
   border-radius: 50% 50% 0 0;
   max-width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* ===== SEAT GRID ===== */
 .seat-grid {
   display: flex;
   flex-direction: column;
@@ -232,7 +228,7 @@
 .row-label {
   width: 20px;
   font-size: 0.8rem;
-  color: #666;
+  color: var(--text-secondary);
   text-align: center;
 }
 
@@ -246,7 +242,6 @@
   gap: 0.35rem;
 }
 
-/* ===== SEAT STYLES ===== */
 .seat {
   width: 28px;
   height: 28px;
@@ -257,26 +252,26 @@
 
 .seat.available {
   background: transparent;
-  border: 2px solid #555;
+  border: 2px solid var(--text-secondary);
 }
 
 .seat.available:hover {
-  border-color: #f5c518;
+  border-color: var(--accent);
   transform: scale(1.1);
 }
 
 .seat.booked {
-  background: #fff;
-  border: 2px solid #fff;
+  background: var(--text-secondary);
+  border: 2px solid var(--text-secondary);
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .seat.selected {
-  background: #f5c518;
-  border: 2px solid #f5c518;
+  background: var(--accent);
+  border: 2px solid var(--accent);
 }
 
-/* ===== LEGEND ===== */
 .seat-legend {
   display: flex;
   justify-content: center;
@@ -288,7 +283,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: #888;
+  color: var(--text-secondary);
 }
 
 .legend-item .seat {
@@ -301,17 +296,16 @@
   transform: none;
 }
 
-/* ===== SELECT BUTTON ===== */
 .select-btn {
   display: block;
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
   padding: 1rem 2rem;
-  background: #f5c518;
+  background: var(--accent);
   border: none;
   border-radius: 10px;
-  color: #000;
+  color: var(--accent-text);
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
@@ -319,12 +313,11 @@
 }
 
 .select-btn:hover {
-  background: #d4a817;
+  background: var(--accent-hover);
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(245, 197, 24, 0.3);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .seat-page {
     flex-direction: column;
@@ -337,7 +330,7 @@
   }
 
   .poster-gradient {
-    background: linear-gradient(0deg, #1a1a1a 0%, transparent 50%);
+    background: linear-gradient(0deg, var(--bg-page) 0%, transparent 50%);
   }
 
   .seat-selection {

@@ -1,24 +1,79 @@
-/* ===== AUTH CONTAINER ===== */
+:root {
+  --bg-page: #000000;
+  --bg-card: #111111;
+  --bg-hover: #1a1a1a;
+  --bg-nav: rgba(0, 0, 0, 0.9);
+
+  --text-main: #ffffff;
+  --text-header: #ffffff;
+  --text-secondary: #888888;
+
+  --border-color: #222222;
+
+  --accent: #facc15;
+  --accent-hover: #eab308;
+  --accent-text: #000000;
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+html.light-mode {
+  --bg-page: #f4f4f5;
+  --bg-card: #ffffff;
+  --bg-hover: #f1f5f9;
+  --bg-nav: rgba(255, 255, 255, 0.95);
+
+  --text-main: #18181b;
+  --text-header: #18181b;
+  --text-secondary: #52525b;
+
+  --border-color: #e4e4e7;
+
+  --accent: #facc15;
+  --accent-hover: #eab308;
+  --accent-text: #000000;
+
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
 .auth-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0f0f1a;
+  background: var(--bg-page);
   padding: 2rem;
+  transition: background-color 0.3s ease;
 }
 
 .auth-card {
   display: flex;
   width: 100%;
   max-width: 900px;
-  background: #1a1a2e;
+  background: var(--bg-card);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* ===== LEFT SIDE - POSTER ===== */
 .auth-poster {
   position: relative;
   width: 45%;
@@ -46,12 +101,12 @@
 
 .poster-badge {
   display: inline-block;
-  background: #e50914;
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-text);
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0.75rem;
@@ -69,14 +124,13 @@
   line-height: 1.4;
 }
 
-/* ===== RIGHT SIDE - FORM ===== */
 .auth-form-section {
   width: 55%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  background: #1a1a2e;
+  background: var(--bg-card);
 }
 
 .auth-form-container {
@@ -87,35 +141,33 @@
 .auth-form-container h1 {
   font-size: 2rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
   margin-bottom: 0.5rem;
 }
 
 .auth-subtitle {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   margin-bottom: 2rem;
 }
 
-/* ===== ERROR MESSAGE ===== */
 .auth-error {
-  background: rgba(229, 9, 20, 0.1);
-  border: 1px solid rgba(229, 9, 20, 0.3);
-  color: #e50914;
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  color: var(--accent);
   padding: 0.75rem 1rem;
   border-radius: 10px;
   font-size: 0.85rem;
   margin-bottom: 1.5rem;
 }
 
-/* ===== FORM STYLES ===== */
 .form-group {
   margin-bottom: 1.25rem;
 }
 
 .form-group label {
   display: block;
-  color: #fff;
+  color: var(--text-main);
   font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -124,31 +176,30 @@
 .form-group input {
   width: 100%;
   padding: 0.875rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(229, 9, 20, 0.3);
+  background: var(--bg-hover);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  color: #fff;
+  color: var(--text-main);
   font-size: 0.95rem;
   transition: all 0.3s ease;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #e50914;
-  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+  background: var(--bg-hover);
 }
 
 .form-group input::placeholder {
-  color: #555;
+  color: var(--text-secondary);
 }
 
-/* ===== PASSWORD INPUT ===== */
 .password-input {
   position: relative;
 }
 
 .password-input input {
-  padding-right: 19px;
+  padding-right: 40px;
 }
 
 .toggle-password {
@@ -158,7 +209,7 @@
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  color: #666;
+  color: var(--text-secondary);
   cursor: pointer;
   padding: 0;
   display: flex;
@@ -167,10 +218,9 @@
 }
 
 .toggle-password:hover {
-  color: #e50914;
+  color: var(--accent);
 }
 
-/* ===== FORM OPTIONS ===== */
 .form-options {
   display: flex;
   justify-content: flex-end;
@@ -178,34 +228,33 @@
 }
 
 .forgot-link {
-  color: #e50914;
+  color: var(--accent);
   font-size: 0.85rem;
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .forgot-link:hover {
-  color: #ff6b6b;
+  color: var(--accent-hover);
 }
 
-/* ===== SUBMIT BUTTON ===== */
 .auth-btn {
   width: 100%;
   padding: 1rem;
-  background: #e50914;
+  background: var(--accent);
   border: none;
   border-radius: 10px;
-  color: #fff;
+  color: var(--accent-text);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .auth-btn:hover:not(:disabled) {
-  background: #f40612;
+  background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+  box-shadow: 0 10px 30px rgba(250, 204, 21, 0.2);
 }
 
 .auth-btn:disabled {
@@ -213,16 +262,15 @@
   cursor: not-allowed;
 }
 
-/* ===== SWITCH LINK ===== */
 .auth-switch {
   text-align: center;
   margin-top: 2rem;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .auth-switch a {
-  color: #e50914;
+  color: var(--accent);
   cursor: pointer;
   font-weight: 500;
   text-decoration: none;
@@ -230,10 +278,9 @@
 }
 
 .auth-switch a:hover {
-  color: #ff6b6b;
+  color: var(--accent-hover);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .auth-card {
     flex-direction: column;

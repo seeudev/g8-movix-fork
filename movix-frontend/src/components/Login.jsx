@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Eye, EyeOff } from 'lucide-react';
 import '../css/global.css';
-import movie1 from '../assets/covers/shrek.jpg';
+import wicked from '../assets/movies/wicked.jpg';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -29,8 +29,9 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('userEmail', email);
-        login(data.token);
+        // updated: pass both token and email to context
+        // the context will handle localStorage.setItem for you
+        login(data.token, email);
         navigate('/landing');
       } else {
         setError(data.message || 'Invalid credentials');
@@ -47,12 +48,12 @@ const Login = () => {
       <div className="auth-card">
         {/* Left Side - Movie Poster */}
         <div className="auth-poster">
-          <img src={movie1} alt="Featured Movie" />
+          <img src={wicked} alt="Featured Movie" />
           <div className="poster-overlay">
             <div className="poster-content">
               <span className="poster-badge">Now Showing</span>
-              <h2>Star Shrek</h2>
-              <p>A 2015 sci-fi short film where Shrek and Donkey attempt to conquer new territory, but the Starship Enterprise crew tries to stop them.</p>
+              <h2>Wicked for Good</h2>
+              <p>Elphaba, the future Wicked Witch of the West and her relationship with Glinda, the Good Witch of the North. The second of a two-part feature film adaptation of the Broadway musical.</p>
             </div>
           </div>
         </div>
