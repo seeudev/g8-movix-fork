@@ -1,0 +1,242 @@
+/* ===== MOVIE DETAILS PAGE ===== */
+.movie-details-page {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #f5c518;
+}
+
+.header-left {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.header-icon {
+  background: #d4a817;
+  border: none;
+  color: #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.header-icon:hover {
+  background: #b8960f;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #000;
+  letter-spacing: 3px;
+}
+
+.header-right {
+  width: 100px;
+}
+
+/* ===== MAIN CONTENT ===== */
+.details-content {
+  display: grid;
+  grid-template-columns: 300px 1fr 350px;
+  gap: 2.5rem;
+  padding: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===== POSTER ===== */
+.details-poster {
+  position: relative;
+}
+
+.details-poster img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== MOVIE INFO ===== */
+.details-info {
+  padding-right: 1rem;
+}
+
+.movie-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.movie-title .director {
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  color: #888;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.movie-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+/* ===== CAST SECTION ===== */
+.cast-section h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.cast-list p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: #ccc;
+}
+
+.cast-list strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ===== REVIEWS ===== */
+.details-reviews {
+  padding-left: 1.5rem;
+  border-left: 1px solid #333;
+}
+
+.details-reviews h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.review-card {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.review-card:last-of-type {
+  border-bottom: none;
+}
+
+.review-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #ccc;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+
+.review-author {
+  font-size: 0.85rem;
+  color: #888;
+  text-align: right;
+}
+
+/* ===== BUY TICKETS BUTTON ===== */
+.buy-tickets-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  background: #f5c518;
+  border: none;
+  border-radius: 30px;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buy-tickets-btn:hover {
+  background: #d4a817;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(245, 197, 24, 0.3);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .details-content {
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+  }
+
+  .details-reviews {
+    grid-column: 1 / -1;
+    border-left: none;
+    border-top: 1px solid #333;
+    padding-left: 0;
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .details-reviews h3 {
+    grid-column: 1 / -1;
+  }
+
+  .buy-tickets-btn {
+    grid-column: 1 / -1;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .details-content {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .details-poster {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .movie-title {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .movie-description {
+    text-align: left;
+  }
+
+  .details-reviews {
+    grid-template-columns: 1fr;
+  }
+
+  .header-title {
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+  }
+}
