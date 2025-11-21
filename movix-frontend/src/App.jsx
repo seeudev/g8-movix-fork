@@ -5,6 +5,8 @@ import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import SeatSelectionPage from './components/SeatSelectionPage.jsx';
+import MovieDesc from './components/MovieDesc.jsx';
+import NowShowing from './components/NowShowing.jsx';
 
 // Protected Route wrapper
 const ProtectedRoute = ({ children }) => {

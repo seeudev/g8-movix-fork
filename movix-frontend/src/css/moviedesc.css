@@ -1,0 +1,119 @@
+:root {
+    --primary: #000000;
+    --bg: #ffffff;
+    --text: #000000;
+    --text-header: #ffffff;
+    --text-secondary: #666666;
+    --border: #e0e0e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { background-color: var(--bg); color: var(--text); padding-bottom: 50px; }
+
+.header {
+    background-color: var(--primary);
+    color: var(--text-header);
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.header-icons { display: flex; gap: 15px; }
+
+.icon-circle {
+    width: 35px; height: 35px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background 0.2s;
+}
+
+.icon-circle:hover { background: rgba(255,255,255,0.4); }
+
+.header-title {
+    font-size: 2.5rem; font-weight: 900;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+.detail-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.detail-poster img {
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    filter: grayscale(100%);
+}
+
+.detail-content h1 {
+    font-size: 3rem; font-weight: 900;
+    text-transform: uppercase; margin-bottom: 5px;
+}
+
+.director {
+    font-size: 0.9rem; font-weight: 700;
+    margin-bottom: 20px; color: var(--text-secondary);
+}
+
+.synopsis {
+    font-size: 0.95rem; line-height: 1.6;
+    margin-bottom: 30px; text-align: justify;
+}
+
+.cast-section h2 {
+    font-size: 2rem; font-weight: 900;
+    text-transform: uppercase; margin-bottom: 15px;
+}
+
+.cast-list p {
+    font-size: 0.9rem; margin-bottom: 5px;
+    line-height: 1.4; color: var(--text-secondary);
+}
+
+.cast-list strong { font-weight: 800; color: var(--text); }
+
+.reviews-section {
+    text-align: center; padding-left: 20px;
+    border-left: 1px solid var(--border);
+}
+
+.reviews-header {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 600; margin-bottom: 20px;
+}
+
+.review-text {
+    font-size: 0.9rem; line-height: 1.5;
+    margin-bottom: 20px; font-style: normal;
+}
+
+.review-source {
+    font-weight: 800; font-size: 0.85rem;
+    margin-bottom: 30px; display: block;
+    color: var(--text-secondary);
+}
+
+.detail-actions {
+    grid-column: 1 / -1;
+    display: flex; justify-content: center; margin-top: 40px;
+}
+
+.btn-buy-large {
+    background-color: var(--primary);
+    color: white; border: none;
+    padding: 15px 50px; border-radius: 30px;
+    font-weight: 600; font-size: 1.2rem;
+    cursor: pointer; transition: opacity 0.2s;
+    text-transform: lowercase;
+}
+
+.btn-buy-large:hover { opacity: 0.8; }

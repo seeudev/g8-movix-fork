@@ -1,0 +1,92 @@
+:root {
+    --primary: #000000;
+    --bg: #ffffff;
+    --text: #000000;
+    --text-header: #ffffff;
+    --text-secondary: #666666;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { background-color: var(--bg); color: var(--text); padding-bottom: 50px; }
+
+.header {
+    background-color: var(--primary);
+    color: var(--text-header);
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.header-icons { display: flex; gap: 15px; }
+
+.icon-circle {
+    width: 35px; height: 35px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background 0.2s;
+}
+
+.icon-circle:hover { background: rgba(255,255,255,0.4); }
+
+.header-title {
+    font-size: 2.5rem; font-weight: 900;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+.date-header {
+    text-align: center; font-size: 1.2rem; font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.movie-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 20px; align-items: start;
+}
+
+.movie-col { display: flex; flex-direction: column; align-items: center; }
+
+.poster-wrapper { display: flex; align-items: flex-start; width: 100%; text-decoration: none; }
+
+.rank-number {
+    font-size: 4rem; font-weight: 900; color: var(--text);
+    line-height: 0.8; margin-right: 5px;
+}
+
+.poster-img {
+    width: 100%; aspect-ratio: 2/3; object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, filter 0.2s;
+    filter: grayscale(100%);
+}
+
+.poster-img:hover { transform: scale(1.02); filter: grayscale(0%); }
+
+.movie-info { text-align: center; margin-top: 15px; width: 100%; }
+
+.movie-title {
+    font-weight: 800; text-transform: uppercase; font-size: 1rem;
+    margin-bottom: 10px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.showtimes {
+    list-style: none; font-size: 0.85rem; font-weight: 600;
+    margin-bottom: 10px; color: var(--text-secondary);
+}
+
+.price { font-weight: 900; font-size: 1.1rem; margin-bottom: 10px; }
+
+.btn-buy {
+    background-color: var(--primary); color: white;
+    border: none; padding: 8px 25px; border-radius: 20px;
+    font-weight: 600; cursor: pointer; transition: opacity 0.2s;
+}
+
+.btn-buy:hover { opacity: 0.8; }
